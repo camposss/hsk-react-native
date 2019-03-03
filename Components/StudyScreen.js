@@ -11,7 +11,7 @@ class StudyScreen extends React.Component {
         <Button
           onPress={() => navigation.navigate('Info')}
           title="Info"
-          color="#fff"
+          color="blue"
       />
       ),
     };
