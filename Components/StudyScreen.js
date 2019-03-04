@@ -14,55 +14,67 @@ class StudyScreen extends React.Component {
         <Button
           onPress={() => navigation.navigate("Info")}
           title="Info"
-          type = "clear"
+          type="clear"
         />
       )
     };
   };
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       currentHskData: []
-    }
+    };
   }
 
-  renderHskData(){
+  renderHskData() {
     //determine level-- for now will be hsk1
 
     //return random index of array
 
-    let randomIndex = Math.floor(Math.random()* hsk1.length + 1);
-    console.log(hsk1[randomIndex])
-    if(hsk1[randomIndex]) {
+    let randomIndex = Math.floor(Math.random() * hsk1.length + 1);
+    console.log(hsk1[randomIndex]);
+    if (hsk1[randomIndex]) {
       return hsk1[randomIndex];
     }
   }
 
   render() {
-    const currentHskWordData = this.renderHskData()
+    const currentHskWordData = this.renderHskData();
     return (
-      <View style={styles.container}>
-        <Card
-          containerStyle={styles.cardContainer}
-          title="Shanghai, China"
-          image={require("../assets/images/shanghai.png")}
-        >
-          <View style = {styles.bottomCardSectionContainer}>
-            <View style= {styles.studyTextContainer}>
-              <Text style={styles.chinese_character }>{currentHskWordData.chinese_character}</Text>
-              <Text style={styles.example_sentence }>{currentHskWordData.pinyin}</Text>
-              <Text style={styles.example_chinese_sentence}>{currentHskWordData.chinese_sentence_1}</Text>
-              <Text style={styles.example_english_sentence}>{currentHskWordData.english_sentence_1}</Text>
-            </View>
-            <Button
-              title="Flip Card"
-              style = {styles.flip_card_button}
-              // onPress={() => this.props.navigation.navigate("Details")}
-            />
+      <Card
+        containerStyle={styles.cardContainer}
+        title="Shanghai, China"
+        image={require("../assets/images/shanghai.png")}
+      >
+        <View style={styles.bottomCardSectionContainer}>
+          <View style={styles.studyTextContainer}>
+            <Text style={styles.chinese_character}>
+              {currentHskWordData.chinese_character}
+            </Text>
+            <Text style={styles.example_sentence}>
+              {currentHskWordData.pinyin}
+            </Text>
+            <Text style={styles.example_chinese_sentence}>
+              {currentHskWordData.chinese_sentence_1}
+            </Text>
+            <Text style={styles.example_chinese_sentence}>
+              {currentHskWordData.pinyin_sentence_1}
+            </Text>
+            <Text style={styles.example_english_sentence}>
+              {currentHskWordData.english_sentence_1}
+            </Text>
           </View>
-
-        </Card>
-      </View>
+        </View>
+        <Button
+          title="Flip Card"
+          buttonStyle={{
+            borderRadius: 0,
+            marginLeft: 0,
+            marginRight: 0,
+            marginBottom: 0
+          }}
+        />
+      </Card>
     );
   }
 }
@@ -72,15 +84,17 @@ export default StudyScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: "center", 
-    // justifyContent: "center"
+    alignContent: "center",
+    justifyContent: "center"
   },
   cardContainer: {
     // flex: 1,
     height: "95%",
+    // justifyContent: "center",
     backgroundColor: "white"
   },
   bottomCardSectionContainer: {
+    flexDirection: "column",
     justifyContent: "space-between"
   },
   studyTextContainer: {
@@ -90,18 +104,17 @@ const styles = StyleSheet.create({
   chinese_character: {
     fontSize: 32,
     marginTop: "2%",
-    marginBottom: '5%'
+    marginBottom: "5%"
   },
   example_chinese_sentence: {
     fontSize: 20,
-    marginBottom: '5%'
+    marginBottom: "5%"
   },
   example_english_sentence: {
     fontSize: 14,
-    marginBottom: '5%'
+    marginBottom: "5%"
   },
-  flip_card_button: {
-    marginTop: "50%"
+  flip_card_button_container: {
+    
   }
-
 });
